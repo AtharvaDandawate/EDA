@@ -1,0 +1,145 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ExpenseFlow | Expense Tracker</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#">
+      <span class="brand-mark">E</span>
+      <span>ExpenseFlow</span>
+    </a>
+    <button id="theme-toggle" class="icon-button" type="button">
+      ☾
+    </button>
+  </header>
+
+  <main class="page-shell">
+    <section class="welcome-row">
+      <div>
+        <p class="eyebrow">YOUR MONEY, IN FOCUS</p>
+        <h1>Expense overview</h1>
+        <p class="muted">A clearer picture of where your money goes.</p>
+      </div>
+      <button class="primary-button" id="add-expense-shortcut" type="button">
+        + Add expense
+      </button>
+    </section>
+
+    <section class="summary-grid">
+      <article class="summary-card">
+        <p class="summary-label">Total spent this month</p>
+        <p class="summary-value" id="monthly-total">₹0.00</p>
+      </article>
+      <article class="summary-card">
+        <p class="summary-label">All recorded expenses</p>
+        <p class="summary-value" id="expense-count">0</p>
+      </article>
+      <article class="summary-card">
+        <p class="summary-label">Monthly budget</p>
+        <p class="summary-value" id="budget-total">Not set</p>
+      </article>
+    </section>
+
+    <section class="content-grid">
+      <article class="panel" id="expense-form-panel">
+        <h2>Add an expense</h2>
+        <form id="expense-form">
+          <div class="field">
+            <label for="expense-title">Expense name</label>
+            <input id="expense-title" name="title" type="text"
+              placeholder="e.g. Lunch with friends" minlength="2"
+              maxlength="60" required>
+          </div>
+
+          <div class="field">
+            <label for="expense-amount">Amount (₹)</label>
+            <input id="expense-amount" name="amount" type="number"
+              min="0.01" step="0.01" required>
+          </div>
+
+          <div class="field">
+            <label for="expense-category">Category</label>
+            <select id="expense-category" name="category" required>
+              <option value="">Choose one</option>
+              <option>Food</option>
+              <option>Transport</option>
+              <option>Shopping</option>
+              <option>Bills</option>
+              <option>Education</option>
+              <option>Health</option>
+              <option>Entertainment</option>
+              <option>Other</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="expense-date">Date</label>
+            <input id="expense-date" name="date" type="date" required>
+          </div>
+
+          <button class="primary-button" type="submit">Save expense</button>
+          <p id="form-message" role="status">Ready to get started.</p>
+        </form>
+      </article>
+
+      <article class="panel">
+        <h2>Recent expenses</h2>
+        <div class="toolbar">
+          <label for="expense-search">Search expenses</label>
+          <input id="expense-search" type="search" placeholder="Search...">
+
+          <label for="category-filter">Filter category</label>
+          <select id="category-filter">
+            <option value="">All categories</option>
+            <option>Food</option>
+            <option>Transport</option>
+            <option>Shopping</option>
+            <option>Bills</option>
+            <option>Education</option>
+            <option>Health</option>
+            <option>Entertainment</option>
+            <option>Other</option>
+          </select>
+
+          <label for="sort-order">Sort expenses</label>
+          <select id="sort-order">
+            <option value="newest">Newest first</option>
+            <option value="oldest">Oldest first</option>
+            <option value="highest">Highest amount</option>
+            <option value="lowest">Lowest amount</option>
+          </select>
+        </div>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Expense</th>
+                <th>Category</th>
+                <th>Date</th>
+                <th>Amount</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="expense-list">
+              <tr>
+                <td colspan="5">No expenses yet. Add your first expense.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </article>
+    </section>
+
+    <footer class="footer">
+      ExpenseFlow · Built with HTML, CSS and JavaScript
+    </footer>
+  </main>
+</body>
+</html>
